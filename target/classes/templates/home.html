@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Spring Boot CRUD Example</title>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link rel="icon" th:href="@{/img/ubuntu.png}">
+
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+</head>
+<body>
+	<div class="container"><h2>STUDENT DATA</h2></div>
+	<div class="container"><a class="btn btn-info" th:href="@{/create}" role="button">New</a></div>
+	<div class="container">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Jurusan</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="s : ${student}">
+					<td scope="col" th:text="${s.name}"></td>
+					<td scope="col" th:text="${s.jurusan}"></td>
+					<td scope="col">
+						<a th:href="${'/edit/'+s.id}" role="button" class="btn btn-primary"><span>Edit</span></a>
+						<a th:href="${'/hapus/'+s.id}" role="button" class="btn btn-danger"><span>Remove</span></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>
